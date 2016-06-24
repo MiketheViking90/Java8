@@ -3,6 +3,7 @@ package chap1.filteringapples;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class ApplePicker {
 
@@ -38,6 +39,19 @@ public class ApplePicker {
         return filterApples(inventory, ApplePicker::isHeavyApple);
     }
 
+    public List<Apple> filterHeavyAppleStream() {
+        List<Apple> heavyApples =
+                inventory.stream()
+                         .filter((Apple a) -> a.getWeight() > 150)
+                         .collect(Collectors.toList());
+
+        List<Apple> parallelHeavyApples =
+                inventory.parallelStream()
+                         .filter((Apple a) -> a.getWeight() > 150)
+                         .collect(Collectors.toList());
+        return heavyApples;
+    }
+
     /* Begin Predicate Filter methods */
     private static boolean isGreenApple(Apple apple) {
         return "green".equals(apple.getColor());
@@ -52,4 +66,5 @@ public class ApplePicker {
         List<Apple> filteredApples = new ArrayList<>();
         return filteredApples;
     }
+
 }
