@@ -3,6 +3,7 @@ package chap3.predicate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 
 public class Predicater<T> {
@@ -29,6 +30,11 @@ public class Predicater<T> {
         Predicate<String> afterBFilter = (String str) -> (str.compareTo("b") >= 1);
         filtered = stringPredicater.filter(strings, afterBFilter);
         System.out.println(filtered);
+
+        Predicate<Integer> isEvenPredicate = (Integer i) -> ((i % 2) == 0);
+        System.out.println(isEvenPredicate.test(200));
+        IntPredicate isOddPredicate = (int i ) -> ((i%2) == 1);
+        System.out.println(isOddPredicate.test(1002));
     }
 
 }
