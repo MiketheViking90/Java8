@@ -72,7 +72,9 @@ public class SortApples {
         apples.sortApples(colorComparator);
         System.out.println(apples.getApples());
 
-        apples.sortApples(colorComparator.reversed().thenComparing(Apple::getWeight));
+        apples.sortApples(colorComparator
+                          .reversed()
+                          .thenComparing(Apple::getWeight));
         System.out.println(apples.getApples());
     }
 }
