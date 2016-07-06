@@ -24,8 +24,12 @@ public class DishFindAndMatch {
         System.out.println(noneHighCalorie);
 
         Optional<Dish> veggie = menu.stream().filter(Dish::isVegetarian).findAny();
-        Optional<Dish> firstVeggie = menu.stream().filter(Dish::isVegetarian).findFirst();
-        System.out.println(veggie);
-        System.out.println(firstVeggie);
+        menu.stream()
+            .filter(Dish::isVegetarian)
+            .findFirst()
+            .ifPresent(d -> System.out.println(d.getName()));
+        if (veggie.isPresent()) {
+            System.out.println(veggie.get());
+        }
     }
 }
