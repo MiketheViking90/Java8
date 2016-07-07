@@ -3,6 +3,7 @@ package chap5.practice;
 import static java.util.Comparator.comparing;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -33,8 +34,7 @@ public class Market {
     private void findUniqueCities() {
         System.out.println("What are all the unique cities where traders work?");
         transactions.stream()
-                    .map(Transaction::getTrader)
-                    .map(Trader::getCity)
+                    .map(tr -> tr.getTrader().getCity())
                     .distinct()
                     .forEach(System.out::println);;
         System.out.println();
@@ -86,19 +86,17 @@ public class Market {
 
     private void findHighestValue() {
         System.out.println("What's the highest value of all the transcitons?");
-        int max = transactions.stream()
-                              .map(Transaction::getValue)
-                              .reduce(Integer::max).get();
-        System.out.println(max);
+        Transaction maxTrans = transactions.stream()
+                                           .max(Comparator.comparing(Transaction::getValue)).get();
+        System.out.println(maxTrans);
         System.out.println();
     }
 
     private void findLowestValue() {
         System.out.println("Find the transaction with the smallest value.");
-        int min = transactions.stream()
-                             .map(Transaction::getValue)
-                             .reduce(Integer::min).get();
-        System.out.println(min);
+        Transaction minTrans = transactions.stream()
+                              .min(Comparator.comparing(Transaction::getValue)).get();
+        System.out.println(minTrans);
         System.out.println();
     }
     public static void main(String[] args) {
