@@ -87,7 +87,8 @@ public class Market {
     private void findHighestValue() {
         System.out.println("What's the highest value of all the transcitons?");
         Transaction maxTrans = transactions.stream()
-                                           .max(Comparator.comparing(Transaction::getValue)).get();
+                                           .max(Comparator.comparing(Transaction::getValue))
+                                           .get();
         System.out.println(maxTrans);
         System.out.println();
     }
@@ -95,7 +96,8 @@ public class Market {
     private void findLowestValue() {
         System.out.println("Find the transaction with the smallest value.");
         Transaction minTrans = transactions.stream()
-                              .min(Comparator.comparing(Transaction::getValue)).get();
+                                           .min(Comparator.comparing(Transaction::getValue))
+                                           .get();
         System.out.println(minTrans);
         System.out.println();
     }
