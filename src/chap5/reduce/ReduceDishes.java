@@ -31,11 +31,17 @@ public class ReduceDishes {
         System.out.println(count);
     }
 
+    private static void concatStrings() {
+        List<String> strings = Arrays.asList("a", "b", "c", "d");
+        String concat = strings.stream().reduce((a, b) -> a+b).get();
+        System.out.println(concat);
+    }
     public static void main(String[] args) {
         List<Dish> menu = Dish.menu;
         List<Integer> ints = Arrays.asList(1,2,3,4,5,6);
         findMaxCalories(menu);
         countDishesReduce(menu);
         getMax(ints);
+        concatStrings();
     }
 }

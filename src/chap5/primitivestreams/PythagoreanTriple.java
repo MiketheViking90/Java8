@@ -15,13 +15,17 @@ public class PythagoreanTriple {
                 (Integer a, Integer b) -> ((Math.sqrt(a*a + b*b) % 1.0) == 0);
 
         int a = 5;
-        IntPredicate isTriple =
-                (b -> (Math.sqrt(a*a + b*b)) % 1.0 == 0);
+        IntPredicate isTriple = (b -> (isInteger(Math.sqrt(a*a + b*b))));
 
         IntStream.rangeClosed(0, 100)
                  .filter(isTriple)
-                 .boxed()
-                 .map(b -> new int[]{a, b, 4});
+                 .mapToObj(b -> new int[]{a, b, (int) Math.sqrt(a*a + b*b)});
 
+//        Stream<int[]> pythTriples =
+//                IntStream.rangeClosed(1, 100).boxed()
+//                         .flatMap(a ->
+//                                 IntStream.rangeClosed(a, 100)
+//                                          .filter((b -> (isInteger(Math.sqrt(a*a + b*b)))))
+//                                          .mapToObj(b -> new int[]{a, b, (int) Math.sqrt(a*a + b*b)}));
     }
 }
