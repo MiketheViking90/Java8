@@ -1,4 +1,4 @@
-package chap6.Partitioning;
+package chap6.partitioning;
 
 import static java.util.stream.Collectors.partitioningBy;
 
