@@ -17,7 +17,7 @@ public class GeneralReduce {
 
         int simpleCals = menu.stream()
                              .collect(Collectors.reducing(
-                                     0, Dish::getCalories, (a, b) -> a+b));
+                                     0, Dish::getCalories, Integer::sum));
         System.out.println(simpleCals);
     }
 
@@ -32,9 +32,21 @@ public class GeneralReduce {
         System.out.println(lowCalCollect);
     }
 
+    void dishCount() {
+        long cnt = menu.stream().count();
+        long cnt2 = menu.stream().collect(Collectors.counting());
+        System.out.println(cnt);
+        System.out.println(cnt2);
+    }
+
+    void joinNames() {
+        System.out.println(menu.stream().map(Dish::getName).collect(Collectors.joining(", ")));
+    }
     public static void main(String[] args) {
         GeneralReduce gr = new GeneralReduce();
         gr.generalSum();
         gr.hiCalDish();
+        gr.dishCount();
+        gr.joinNames();
     }
 }

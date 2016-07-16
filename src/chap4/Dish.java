@@ -21,6 +21,10 @@ public class Dish {
         this.type = type;
     }
 
+    public boolean isLowCalorie() {
+        return calories <= 400;
+    }
+
     public enum Type { MEAT, FISH, OTHER }
 
     public static final List<Dish> menu =
