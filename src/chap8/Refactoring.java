@@ -29,7 +29,7 @@ public class Refactoring {
 
     void shadowVarLambda() {
         Runnable r = () -> {
-            int val = 2;
+            int val = 22;
             System.out.println(val);
         };
     }
