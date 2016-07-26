@@ -1,4 +1,4 @@
-package chap8;
+package chap8.refactoring;
 
 public class Refactoring {
 
