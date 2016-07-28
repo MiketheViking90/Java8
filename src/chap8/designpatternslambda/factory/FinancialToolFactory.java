@@ -32,4 +32,5 @@ public class FinancialToolFactory {
         f.purchase();
         f1.purchase();
     }
+
 }
