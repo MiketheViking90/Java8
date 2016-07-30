@@ -60,6 +60,7 @@ public class Extract {
         String name = person.getName().orElse("Bill");
         person.setCar(Optional.ofNullable(null));
         Car car1 = person.getCar().orElseGet(() -> new Car("Nissan", "Altima"));
+        System.out.println(Optional.empty());
         System.out.println(name);
         System.out.println(car1);
     }
